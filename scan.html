@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>足部扫描 - 3D打印童鞋APP</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-time">14:30</div>
+        <div class="status-bar-right">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="content">
+        <div class="flex items-center justify-between mb-4">
+            <h1 class="ios-title">足部扫描</h1>
+            <a href="scan-history.html" class="text-blue-500">
+                <i class="fas fa-history"></i>
+            </a>
+        </div>
+
+        <!-- 扫描指南 -->
+        <div class="ios-card mb-6">
+            <div class="ios-card-content p-4">
+                <h2 class="font-semibold mb-2">扫描前的准备</h2>
+                <ul class="text-gray-700 text-sm space-y-2">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                        <span>确保足部清洁干燥</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                        <span>将手机置于平稳表面，约30-50厘米距离</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                        <span>确保光线充足，避免阴影</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                        <span>在扫描过程中保持宝宝足部静止不动</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 扫描预览区域 -->
+        <div class="model-container overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1532156580318-9fad10c61d2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="扫描预览" class="absolute inset-0 w-full h-full object-cover">
+            
+            <!-- 激光雷达动画模拟 -->
+            <div class="absolute inset-0 flex items-center justify-center z-10">
+                <div class="w-64 h-64 border-4 border-blue-500 rounded-lg opacity-70 relative">
+                    <div class="absolute left-0 right-0 h-1 bg-blue-500 top-0 animate-scan"></div>
+                    <div class="absolute top-0 bottom-0 w-1 bg-blue-500 left-0 animate-scan-horizontal"></div>
+                    <div class="absolute top-0 bottom-0 right-0 w-1 bg-blue-500 animate-scan-horizontal"></div>
+                    <div class="absolute bottom-0 left-0 right-0 h-1 bg-blue-500 animate-scan"></div>
+                </div>
+            </div>
+            
+            <!-- 扫描中提示 -->
+            <div id="scan-status" class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center flex-col hidden">
+                <div class="text-white text-lg mb-3">正在扫描...</div>
+                <div class="w-64 h-3 bg-white bg-opacity-20 rounded-full overflow-hidden">
+                    <div id="scan-progress" class="h-full bg-blue-500 text-xs text-white flex items-center justify-center" style="width: 0%;">0%</div>
+                </div>
+            </div>
+            
+            <!-- 扫描完成提示 -->
+            <div id="scan-complete" class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center flex-col hidden">
+                <div class="text-white text-xl mb-3">
+                    <i class="fas fa-check-circle text-green-400 mr-2"></i>
+                    扫描完成
+                </div>
+                <div class="flex">
+                    <a href="scan-result.html" class="bg-white text-blue-500 rounded-lg px-4 py-2 mr-2">查看结果</a>
+                    <button class="bg-blue-500 text-white rounded-lg px-4 py-2">继续扫描</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 扫描控制 -->
+        <div class="mt-6 mb-4">
+            <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold">扫描选项</h3>
+                <div class="text-sm text-blue-500">
+                    <i class="fas fa-info-circle"></i>
+                    <span>帮助</span>
+                </div>
+            </div>
+            
+            <!-- 选择扫描模式 -->
+            <div class="ios-card mb-4">
+                <div class="ios-card-content p-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <span class="font-medium">选择扫描模式</span>
+                            <p class="text-xs text-gray-500 mt-1">当前模式：精准模式</p>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-400"></i>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="font-medium">选择扫描对象</span>
+                            <p class="text-xs text-gray-500 mt-1">当前选择：左脚</p>
+                        </div>
+                        <div class="flex">
+                            <button class="px-3 py-1 bg-blue-500 text-white text-sm rounded-l-lg">左脚</button>
+                            <button class="px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded-r-lg">右脚</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 开始扫描按钮 -->
+            <button id="start-scan" class="ios-button">
+                <i class="fas fa-qrcode mr-2"></i>
+                开始扫描
+            </button>
+        </div>
+
+        <!-- 扫描提示 -->
+        <div class="text-center text-sm text-gray-500">
+            <p>本APP使用iPhone Pro系列的LiDAR激光雷达扫描</p>
+            <p class="mt-1">请保持iPhone在宝宝足部上方约30厘米处</p>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="scan.html" class="tab-item active">
+            <i class="fas fa-qrcode"></i>
+            <span>扫描</span>
+        </a>
+        <a href="customize.html" class="tab-item">
+            <i class="fas fa-palette"></i>
+            <span>定制</span>
+        </a>
+        <a href="growth.html" class="tab-item">
+            <i class="fas fa-chart-line"></i>
+            <span>成长</span>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </div>
+
+    <style>
+        /* 扫描动画 */
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(64px); }
+        }
+        
+        @keyframes scan-horizontal {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(64px); }
+        }
+        
+        .animate-scan {
+            animation: scan 2s infinite alternate ease-in-out;
+        }
+        
+        .animate-scan-horizontal {
+            animation: scan-horizontal 2s infinite alternate ease-in-out;
+        }
+    </style>
+
+    <script src="scripts.js"></script>
+</body>
+</html> 

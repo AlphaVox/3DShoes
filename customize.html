@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鞋子定制 - 3D打印童鞋APP</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-time">14:30</div>
+        <div class="status-bar-right">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="content">
+        <div class="flex items-center justify-between mb-4">
+            <h1 class="ios-title">鞋子定制</h1>
+            <a href="#" class="text-blue-500">
+                <i class="fas fa-bookmark"></i>
+            </a>
+        </div>
+
+        <!-- 鞋子预览 -->
+        <div class="model-container rounded-lg overflow-hidden relative mb-4">
+            <img src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="鞋子预览" class="w-full h-full object-cover">
+            
+            <!-- 3D旋转控制 -->
+            <div class="absolute bottom-4 right-4 bg-white bg-opacity-80 rounded-full p-2 flex items-center space-x-2">
+                <button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-200">
+                    <i class="fas fa-undo text-gray-700"></i>
+                </button>
+                <button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-200">
+                    <i class="fas fa-redo text-gray-700"></i>
+                </button>
+                <button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-200">
+                    <i class="fas fa-expand-arrows-alt text-gray-700"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 定制选项卡切换 -->
+        <div class="flex border-b border-gray-200 mb-4">
+            <button class="flex-1 py-3 border-b-2 border-blue-500 text-blue-500 font-medium">
+                款式
+            </button>
+            <button class="flex-1 py-3 text-gray-500 font-medium">
+                颜色
+            </button>
+            <button class="flex-1 py-3 text-gray-500 font-medium">
+                图案
+            </button>
+            <button class="flex-1 py-3 text-gray-500 font-medium">
+                配置
+            </button>
+        </div>
+
+        <!-- 款式选择 -->
+        <div class="mb-6">
+            <h3 class="font-semibold mb-3">选择鞋款</h3>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="ios-card p-3 border-2 border-blue-500">
+                    <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="运动鞋" class="w-full h-24 object-cover rounded-lg mb-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-medium">运动鞋</span>
+                        <div class="w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check text-white text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="ios-card p-3">
+                    <img src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="休闲鞋" class="w-full h-24 object-cover rounded-lg mb-2">
+                    <span class="text-sm font-medium">休闲鞋</span>
+                </div>
+                <div class="ios-card p-3">
+                    <img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="学步鞋" class="w-full h-24 object-cover rounded-lg mb-2">
+                    <span class="text-sm font-medium">学步鞋</span>
+                </div>
+                <div class="ios-card p-3">
+                    <img src="https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="凉鞋" class="w-full h-24 object-cover rounded-lg mb-2">
+                    <span class="text-sm font-medium">凉鞋</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 颜色选择 -->
+        <div class="mb-6 hidden">
+            <h3 class="font-semibold mb-3">选择颜色</h3>
+            <div class="color-picker">
+                <div class="color-option active" style="background-color: #FF5252;"></div>
+                <div class="color-option" style="background-color: #448AFF;"></div>
+                <div class="color-option" style="background-color: #69F0AE;"></div>
+                <div class="color-option" style="background-color: #FFEB3B;"></div>
+                <div class="color-option" style="background-color: #7C4DFF;"></div>
+                <div class="color-option" style="background-color: #FF6E40;"></div>
+                <div class="color-option" style="background-color: #FFFFFF; border: 1px solid #ddd;"></div>
+                <div class="color-option" style="background-color: #000000;"></div>
+            </div>
+            
+            <h3 class="font-semibold mb-3 mt-4">选择配色方案</h3>
+            <div class="grid grid-cols-3 gap-3">
+                <div class="ios-card p-2 border-2 border-blue-500">
+                    <div class="h-16 rounded-lg overflow-hidden mb-2 flex">
+                        <div class="flex-1 bg-red-500"></div>
+                        <div class="flex-1 bg-white"></div>
+                    </div>
+                    <span class="text-xs font-medium">红白配色</span>
+                </div>
+                <div class="ios-card p-2">
+                    <div class="h-16 rounded-lg overflow-hidden mb-2 flex">
+                        <div class="flex-1 bg-blue-500"></div>
+                        <div class="flex-1 bg-yellow-300"></div>
+                    </div>
+                    <span class="text-xs font-medium">蓝黄配色</span>
+                </div>
+                <div class="ios-card p-2">
+                    <div class="h-16 rounded-lg overflow-hidden mb-2 flex">
+                        <div class="flex-1 bg-gray-800"></div>
+                        <div class="flex-1 bg-gray-300"></div>
+                    </div>
+                    <span class="text-xs font-medium">经典黑灰</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 图案选择 -->
+        <div class="mb-6 hidden">
+            <h3 class="font-semibold mb-3">选择图案</h3>
+            <div class="grid grid-cols-3 gap-3">
+                <div class="ios-card p-2 border-2 border-blue-500">
+                    <div class="h-16 rounded-lg bg-gray-100 flex items-center justify-center">
+                        <i class="fas fa-star text-yellow-400 text-xl"></i>
+                    </div>
+                    <span class="text-xs font-medium text-center block mt-2">星星</span>
+                </div>
+                <div class="ios-card p-2">
+                    <div class="h-16 rounded-lg bg-gray-100 flex items-center justify-center">
+                        <i class="fas fa-heart text-red-500 text-xl"></i>
+                    </div>
+                    <span class="text-xs font-medium text-center block mt-2">爱心</span>
+                </div>
+                <div class="ios-card p-2">
+                    <div class="h-16 rounded-lg bg-gray-100 flex items-center justify-center">
+                        <i class="fas fa-bolt text-yellow-500 text-xl"></i>
+                    </div>
+                    <span class="text-xs font-medium text-center block mt-2">闪电</span>
+                </div>
+                <div class="ios-card p-2">
+                    <div class="h-16 rounded-lg bg-gray-100 flex items-center justify-center">
+                        <i class="fas fa-rocket text-blue-500 text-xl"></i>
+                    </div>
+                    <span class="text-xs font-medium text-center block mt-2">火箭</span>
+                </div>
+                <div class="ios-card p-2">
+                    <div class="h-16 rounded-lg bg-gray-100 flex items-center justify-center">
+                        <i class="fas fa-paw text-purple-500 text-xl"></i>
+                    </div>
+                    <span class="text-xs font-medium text-center block mt-2">小爪印</span>
+                </div>
+                <div class="ios-card p-2">
+                    <div class="h-16 rounded-lg bg-gray-100 flex items-center justify-center">
+                        <i class="fas fa-crown text-yellow-600 text-xl"></i>
+                    </div>
+                    <span class="text-xs font-medium text-center block mt-2">皇冠</span>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <a href="#" class="text-blue-500 text-sm flex items-center justify-center">
+                    <i class="fas fa-upload mr-1"></i>
+                    上传自定义图案
+                </a>
+            </div>
+        </div>
+
+        <!-- 配置选择 -->
+        <div class="mb-6 hidden">
+            <h3 class="font-semibold mb-3">鞋面软硬程度</h3>
+            <div class="mb-4">
+                <div class="flex justify-between mb-2">
+                    <span class="text-sm text-gray-500">软</span>
+                    <span class="text-sm font-medium" id="upper-softness-value">5</span>
+                    <span class="text-sm text-gray-500">硬</span>
+                </div>
+                <input type="range" min="1" max="10" value="5" class="w-full" data-output="upper-softness-value">
+            </div>
+            
+            <h3 class="font-semibold mb-3">鞋底软硬程度</h3>
+            <div class="mb-4">
+                <div class="flex justify-between mb-2">
+                    <span class="text-sm text-gray-500">软</span>
+                    <span class="text-sm font-medium" id="sole-softness-value">7</span>
+                    <span class="text-sm text-gray-500">硬</span>
+                </div>
+                <input type="range" min="1" max="10" value="7" class="w-full" data-output="sole-softness-value">
+            </div>
+            
+            <h3 class="font-semibold mb-3">鞋底耐磨性</h3>
+            <div class="mb-4">
+                <div class="flex justify-between mb-2">
+                    <span class="text-sm text-gray-500">标准</span>
+                    <span class="text-sm font-medium" id="durability-value">8</span>
+                    <span class="text-sm text-gray-500">加强</span>
+                </div>
+                <input type="range" min="1" max="10" value="8" class="w-full" data-output="durability-value">
+            </div>
+            
+            <h3 class="font-semibold mb-3">脚背高度适配</h3>
+            <div class="mb-4">
+                <div class="flex justify-between mb-2">
+                    <span class="text-sm text-gray-500">低</span>
+                    <span class="text-sm font-medium" id="arch-value">5</span>
+                    <span class="text-sm text-gray-500">高</span>
+                </div>
+                <input type="range" min="1" max="10" value="5" class="w-full" data-output="arch-value">
+            </div>
+            
+            <h3 class="font-semibold mb-3">特殊材质</h3>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="ios-card p-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm">透气材质</span>
+                        <div class="relative inline-block w-10 align-middle select-none">
+                            <input type="checkbox" id="toggle-1" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                            <label for="toggle-1" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ios-card p-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm">防水材质</span>
+                        <div class="relative inline-block w-10 align-middle select-none">
+                            <input type="checkbox" id="toggle-2" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                            <label for="toggle-2" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ios-card p-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm">抗菌鞋垫</span>
+                        <div class="relative inline-block w-10 align-middle select-none">
+                            <input type="checkbox" id="toggle-3" checked class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                            <label for="toggle-3" class="toggle-label block overflow-hidden h-6 rounded-full bg-blue-500 cursor-pointer"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ios-card p-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm">缓震技术</span>
+                        <div class="relative inline-block w-10 align-middle select-none">
+                            <input type="checkbox" id="toggle-4" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                            <label for="toggle-4" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 确认定制按钮 -->
+        <button class="ios-button mb-4">
+            <i class="fas fa-check mr-2"></i>
+            确认定制
+        </button>
+        
+        <!-- 价格信息 -->
+        <div class="text-center">
+            <p class="text-gray-500 text-sm">定制价格: <span class="text-blue-500 font-bold">¥299.00</span></p>
+            <p class="text-gray-400 text-xs mt-1">包含免费配送，预计15天内完成3D打印和配送</p>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="scan.html" class="tab-item">
+            <i class="fas fa-qrcode"></i>
+            <span>扫描</span>
+        </a>
+        <a href="customize.html" class="tab-item active">
+            <i class="fas fa-palette"></i>
+            <span>定制</span>
+        </a>
+        <a href="growth.html" class="tab-item">
+            <i class="fas fa-chart-line"></i>
+            <span>成长</span>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </div>
+
+    <style>
+        /* 开关样式 */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #3b82f6;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #3b82f6;
+        }
+        .toggle-checkbox {
+            right: 0;
+            z-index: 5;
+            transition: all 0.3s;
+        }
+        .toggle-label {
+            transition: all 0.3s;
+        }
+    </style>
+
+    <script src="scripts.js"></script>
+</body>
+</html> 

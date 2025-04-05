@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D打印童鞋扫描定制检测一体化APP原型</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f5f5f7;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .phone-container {
+            width: 390px;
+            height: 844px;
+            background-color: white;
+            border-radius: 45px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 20px;
+            display: inline-block;
+            border: 12px solid #000;
+        }
+        .screen {
+            width: 100%;
+            height: 100%;
+            border: none;
+            overflow: hidden;
+        }
+        .prototype-title {
+            font-size: 14px;
+            text-align: center;
+            padding: 10px 0;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #ddd;
+        }
+        .prototype-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>3D打印童鞋扫描定制检测一体化APP - 高保真原型</h1>
+    
+    <div class="prototype-container">
+        <div class="phone-container">
+            <div class="prototype-title">首页</div>
+            <iframe src="home.html" class="screen" frameborder="0"></iframe>
+        </div>
+        
+        <div class="phone-container">
+            <div class="prototype-title">足部扫描</div>
+            <iframe src="scan.html" class="screen" frameborder="0"></iframe>
+        </div>
+        
+        <div class="phone-container">
+            <div class="prototype-title">鞋子定制</div>
+            <iframe src="customize.html" class="screen" frameborder="0"></iframe>
+        </div>
+        
+        <div class="phone-container">
+            <div class="prototype-title">成长记录</div>
+            <iframe src="growth.html" class="screen" frameborder="0"></iframe>
+        </div>
+        
+        <div class="phone-container">
+            <div class="prototype-title">鞋履管理</div>
+            <iframe src="shoes-management.html" class="screen" frameborder="0"></iframe>
+        </div>
+        
+        <div class="phone-container">
+            <div class="prototype-title">个人中心</div>
+            <iframe src="profile.html" class="screen" frameborder="0"></iframe>
+        </div>
+    </div>
+</body>
+</html> 

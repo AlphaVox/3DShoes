@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成长记录 - 3D打印童鞋APP</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-time">14:30</div>
+        <div class="status-bar-right">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="content">
+        <div class="flex items-center justify-between mb-4">
+            <h1 class="ios-title">成长记录</h1>
+            <a href="#" class="text-blue-500">
+                <i class="fas fa-plus-circle"></i>
+            </a>
+        </div>
+
+        <!-- 个人资料 -->
+        <div class="ios-card mb-6">
+            <div class="ios-card-content p-4">
+                <div class="flex items-center">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-child text-blue-500 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">小宝贝</h3>
+                        <p class="text-gray-500 text-sm">5岁2个月</p>
+                        <div class="flex items-center mt-1">
+                            <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded mr-2">身高: 110cm</span>
+                            <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">体重: 19kg</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 增长趋势图表 -->
+        <div class="ios-card mb-6">
+            <div class="ios-card-header p-4 flex justify-between items-center">
+                <h3 class="font-semibold">足部成长曲线</h3>
+                <div class="flex items-center">
+                    <button class="text-xs text-blue-500 mr-3 border border-blue-500 px-2 py-1 rounded">足长</button>
+                    <button class="text-xs text-gray-500 border border-gray-300 px-2 py-1 rounded">足宽</button>
+                </div>
+            </div>
+            <div class="ios-card-content p-4">
+                <canvas id="growth-chart" height="200"></canvas>
+                <div class="flex justify-between mt-4 text-xs text-gray-500">
+                    <div class="text-center">
+                        <span class="block font-medium text-blue-500">11cm</span>
+                        <span>1岁</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block font-medium text-blue-500">13cm</span>
+                        <span>2岁</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block font-medium text-blue-500">15cm</span>
+                        <span>3岁</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block font-medium text-blue-500">17cm</span>
+                        <span>4岁</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block font-medium text-blue-500">19cm</span>
+                        <span>5岁</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block font-medium text-gray-300">21cm</span>
+                        <span>6岁(预测)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 生长数据分析 -->
+        <div class="ios-card mb-6">
+            <div class="ios-card-header p-4">
+                <h3 class="font-semibold">足部健康分析</h3>
+            </div>
+            <div class="ios-card-content p-4">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                        <i class="fas fa-chart-line text-blue-500"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-medium">生长速度</h4>
+                        <p class="text-sm text-gray-600">足长生长速度超过了<span class="text-blue-500 font-bold">85%</span>的同龄孩子</p>
+                    </div>
+                </div>
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                        <i class="fas fa-balance-scale text-green-500"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-medium">足部比例</h4>
+                        <p class="text-sm text-gray-600">足长与足宽比例<span class="text-green-500 font-bold">非常均衡</span>，发展健康</p>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                        <i class="fas fa-bullseye text-purple-500"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-medium">足弓发育</h4>
+                        <p class="text-sm text-gray-600">足弓发育<span class="text-yellow-500 font-bold">略偏平</span>，建议使用足弓支撑鞋垫</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 足部成长相册 -->
+        <h2 class="ios-subtitle">足部成长相册</h2>
+        <div class="ios-card mb-6">
+            <div class="ios-card-content p-4">
+                <div class="grid grid-cols-3 gap-2">
+                    <div class="aspect-square rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="1岁足部" class="w-full h-full object-cover">
+                    </div>
+                    <div class="aspect-square rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="2岁足部" class="w-full h-full object-cover">
+                    </div>
+                    <div class="aspect-square rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="3岁足部" class="w-full h-full object-cover">
+                    </div>
+                    <div class="aspect-square rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="4岁足部" class="w-full h-full object-cover">
+                    </div>
+                    <div class="aspect-square rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="5岁足部" class="w-full h-full object-cover">
+                    </div>
+                    <div class="aspect-square rounded-lg bg-gray-100 flex items-center justify-center">
+                        <i class="fas fa-plus text-gray-400"></i>
+                    </div>
+                </div>
+                <p class="text-center text-sm text-gray-500 mt-3">记录宝宝每个阶段的足部发育</p>
+            </div>
+        </div>
+
+        <!-- 成长里程碑 -->
+        <h2 class="ios-subtitle">成长里程碑</h2>
+        <div class="relative pl-8 mb-6">
+            <!-- 时间线 -->
+            <div class="absolute left-3 top-0 bottom-0 w-0.5 bg-blue-200"></div>
+            
+            <!-- 里程碑项目 -->
+            <div class="mb-6 relative">
+                <div class="absolute left-[-1.75rem] top-0 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
+                    <i class="fas fa-check text-white text-xs"></i>
+                </div>
+                <div class="ios-card">
+                    <div class="ios-card-content p-4">
+                        <div class="flex justify-between items-start">
+                            <h4 class="font-semibold">第一次穿鞋</h4>
+                            <span class="text-xs text-gray-500">1岁2个月</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-1">宝宝的第一双鞋，尺码15，学步鞋</p>
+                        <div class="mt-2">
+                            <img src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="第一双鞋" class="w-full h-32 object-cover rounded-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-6 relative">
+                <div class="absolute left-[-1.75rem] top-0 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
+                    <i class="fas fa-check text-white text-xs"></i>
+                </div>
+                <div class="ios-card">
+                    <div class="ios-card-content p-4">
+                        <div class="flex justify-between items-start">
+                            <h4 class="font-semibold">开始独立行走</h4>
+                            <span class="text-xs text-gray-500">1岁8个月</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-1">宝宝开始自己走路了，换上了第一双防滑软底鞋</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative">
+                <div class="absolute left-[-1.75rem] top-0 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
+                    <i class="fas fa-check text-white text-xs"></i>
+                </div>
+                <div class="ios-card">
+                    <div class="ios-card-content p-4">
+                        <div class="flex justify-between items-start">
+                            <h4 class="font-semibold">开始上幼儿园</h4>
+                            <span class="text-xs text-gray-500">3岁0个月</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-1">上幼儿园了，定制了第一双运动鞋</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 下一次换鞋提醒 -->
+        <div class="ios-card mb-4">
+            <div class="ios-card-content p-4">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="font-semibold">下次换鞋提醒</h3>
+                        <p class="text-sm text-gray-500 mt-1">预计宝宝将在<span class="text-blue-500 font-medium">25天</span>后需要更换鞋子</p>
+                    </div>
+                    <button class="bg-blue-100 text-blue-500 px-3 py-1 rounded-full text-sm">
+                        设置提醒
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="scan.html" class="tab-item">
+            <i class="fas fa-qrcode"></i>
+            <span>扫描</span>
+        </a>
+        <a href="customize.html" class="tab-item">
+            <i class="fas fa-palette"></i>
+            <span>定制</span>
+        </a>
+        <a href="growth.html" class="tab-item active">
+            <i class="fas fa-chart-line"></i>
+            <span>成长</span>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html> 
